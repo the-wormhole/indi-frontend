@@ -14,7 +14,7 @@ const Login = ()=>{
     e.preventDefault();
     setError(''); 
     try{
-      const response = await axios.post(`${config.apiUrl}/api/auth/login`, {
+      const response = await axios.post(`https://www.api-flights-indigo.work.gd/api/auth/login`, {
         mobile,
         password,
       });

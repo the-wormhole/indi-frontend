@@ -13,7 +13,7 @@ function Home() {
   const fetchFlightStatus = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${config.apiUrl}/api/flights/${flightNumber}`);
+      const response = await axios.get(`https://www.api-flights-indigo.work.gd/api/flights/${flightNumber}`);
       setFlightStatus(response.data);
     } catch (error) {
       console.error('Error fetching flight status:', error);

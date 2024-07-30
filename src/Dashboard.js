@@ -9,7 +9,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchFlights = async () => {
       try {
-        const response = await axios.get(`${config.apiUrl}/api/auth/future-flights`, {
+        const response = await axios.get(`https://www.api-flights-indigo.work.gd/api/auth/future-flights`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
