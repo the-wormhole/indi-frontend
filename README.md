@@ -1,7 +1,7 @@
 # Flight Status Update Dashboard - Frontend
 
 ## Overview
-This is the frontend of the Flight Status Dashboard application. It allows users to check the status of their flights, log in, and view future flight bookings. The frontend is built using React and communicates with the backend API to fetch and display data. The logged in users can be configured to receive FCM notifications.
+This is the frontend of the Flight Status Dashboard application. It allows users to check the status of their flights, log in, and view future flight bookings. The frontend is built using React and communicates with the backend API to fetch and display data. The logged in users can be configured to receive FCM notifications. The purpose of the UI is to help the customer check a flight's status and log in to see his future flight schedules.
 
 ## Features
 - Check flight status
@@ -19,10 +19,10 @@ This is the frontend of the Flight Status Dashboard application. It allows users
 ## Installation
 
 1. Clone the repository:
-   ```sh
-   git clone https://github.com/the-wormhole/indigo-frontend-repo4vercel.git
-   cd frontend
-   ```
+```sh
+git clone https://github.com/the-wormhole/indigo-frontend-repo4vercel.git
+cd frontend
+```
 
 2. Install dependencies:
 ```sh
@@ -35,15 +35,51 @@ npm start
 ```
 
 ## Usage
+### Check Flight Status
+1. Enter the flight number and click "Check Status" to view the flight's current status.
+
 ### Login
 1. Enter your mobile number and password to log in.
 2. If you don't have an account, click on the "Sign Up" link to create one.
 
-### Check Flight Status
-1. Enter the flight number and click "Check Status" to view the flight's current status.
-
 ### View Future Flight Bookings
 1. After logging in, the dashboard will display a list of your future flight bookings.
+
+### Add a Passenger and Flights
+1. To add a passenger, you will have to make a curl/API request directly to passengers endpoint. This set up is made keeping in mind that the Bookings will be coming from a different service or 3rd party.
+```sh
+curl -X POST https://www.api-flights-indigo.work.gd/api/passengers \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Jane Doe",
+    "phone": "0987654321",
+    "email": "jane.doe@example.com",
+    "flightNumber": "6E123",
+    "bookingNumber": "PNR123"
+}'
+```
+2. Similar to adding a passenger, a Flight can be added as well. This is also restricted to an API/curl request due to the fact that a Flight will be added by a person working for the Airlines or an Admin.
+```sh
+curl -X POST https://www.api-flights-indigo.work.gd/api/flights \
+  -H "Content-Type: application/json" \
+  -d '{
+    "flightNumber": "6E123",
+    "airline": "Indigo",
+    "status": "Scheduled",
+    "gate": "A2",
+    "ScheduledDepartureTime": "2024-08-01T15:30:00Z",
+    "ScheduledArrivalTime": "2024-08-01T17:30:00Z"
+  }'
+``` 
+3. Flight status changes will also be required to be made using the API/curl request since this would be done by an admin or an employee of the Airlines
+```sh
+curl -X PUT https://www.api-flights-indigo.work.gd/api/flights/6E123 \
+     -H "Content-Type: application/json" \
+     -d '{
+           "status": "Delayed", 
+           "gate": "A2"                    
+        }'
+```         
 
 ## API Endpoints
 The frontend communicates with the following backend API endpoints:
