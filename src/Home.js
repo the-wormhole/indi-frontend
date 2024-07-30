@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import config from '../config'
+import config from './config'
 
 function Home() {
   const [name, setName] = useState('');

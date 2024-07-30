@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
-import config from '../config'
+import config from './config'
 
 function Signup() {
   const [name, setName] = useState('');

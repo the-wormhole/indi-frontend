@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
-import config from '../config'
+import config from './config'
 
 function Dashboard() {
   const [flights, setFlights] = useState([]);
