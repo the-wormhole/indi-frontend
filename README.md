@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Flight Status Update Dashboard - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This is the frontend of the Flight Status Dashboard application. It allows users to check the status of their flights, log in, and view future flight bookings. The frontend is built using React and communicates with the backend API to fetch and display data. The logged in users can be configured to receive FCM notifications.
 
-## Available Scripts
+## Features
+- Check flight status
+- User authentication (login and signup)
+- View future flight bookings
 
-In the project directory, you can run:
+## Technology Stack
+- React
+- Axios (for making API requests)
+- React Router DOM (for routing)
 
-### `npm start`
+## Live App
+- URL - `https://goindigo-flight-status-check.vercel.app`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/the-wormhole/indigo-frontend-repo4vercel.git
+   cd frontend
+   ```
 
-### `npm test`
+2. Install dependencies:
+```sh
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Start the development server:
+```sh
+npm start
+```
 
-### `npm run build`
+## Usage
+### Login
+1. Enter your mobile number and password to log in.
+2. If you don't have an account, click on the "Sign Up" link to create one.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Check Flight Status
+1. Enter the flight number and click "Check Status" to view the flight's current status.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### View Future Flight Bookings
+1. After logging in, the dashboard will display a list of your future flight bookings.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Endpoints
+The frontend communicates with the following backend API endpoints:
 
-### `npm run eject`
+- `POST /api/auth/signup` - Sign up a new user
+- `POST /api/auth/login` - Log in an existing user
+- `GET /api/flights/:flightNumber` - Get flight status by flight number
+- `GET /api/auth/future-flights` - Get future flights for a logged-in customer
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Sample API Requests
+### Sign Up
+```sh
+curl -X POST https://www.api-flights-indigo.work.gd/api/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "1234567890",
+    "password": "password123"
+  }'
+```
+### Log In
+```sh
+curl -X POST https://www.api-flights-indigo.work.gd/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "john.doe@example.com",
+    "password": "password123"
+  }'
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Check Flight Status
+```sh
+curl -X GET https://www.api-flights-indigo.work.gd/api/flights/6E123
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Get Future Flights
+```sh
+curl -X GET https://www.api-flights-indigo.work.gd/api/customers/60d0fe4f5311236168a109ca/flights
+```
+## License
+This project is licensed under the MIT License.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
