@@ -45,7 +45,7 @@ npm start
 ### View Future Flight Bookings
 1. After logging in, the dashboard will display a list of your future flight bookings.
 
-### Add a Passenger and Flights
+### Adding Passengers and Flights
 1. To add a passenger, you will have to make a curl/API request directly to passengers endpoint. This set up is made keeping in mind that the Bookings will be coming from a different service or 3rd party.
 ```sh
 curl -X POST https://www.api-flights-indigo.work.gd/api/passengers \
