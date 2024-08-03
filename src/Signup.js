@@ -14,7 +14,10 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://www.api-flights-indigo.work.gd/api/auth/signup`, { name, mobile, email, password });
+      await axios.post(
+        // `https://www.api-flights-indigo.work.gd/api/auth/signup`
+        `http://localhost:8000/api/auth/singup`
+      , { name, mobile, email, password });
       navigate('/login');
     } catch (error) {
       console.error('Error during signup:', error);

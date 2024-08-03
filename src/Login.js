@@ -14,7 +14,10 @@ const Login = ()=>{
     e.preventDefault();
     setError(''); 
     try{
-      const response = await axios.post(`https://www.api-flights-indigo.work.gd/api/auth/login`, {
+      const response = await axios.post(
+        // `https://www.api-flights-indigo.work.gd/api/auth/login`
+        `http://localhost:8000/api/auth/login`
+      , {
         mobile,
         password,
       });

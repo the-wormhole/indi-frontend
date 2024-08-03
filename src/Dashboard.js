@@ -9,7 +9,10 @@ function Dashboard() {
   useEffect(() => {
     const fetchFlights = async () => {
       try {
-        const response = await axios.get(`https://www.api-flights-indigo.work.gd/api/auth/future-flights`, {
+        const response = await axios.get(
+          // `https://www.api-flights-indigo.work.gd/api/auth/future-flights`
+          `http://localhost:8000/api/auth/future-flights`
+          , {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -34,6 +37,7 @@ function Dashboard() {
             <th>Gate</th>
             <th>Departure Time</th>
             <th>Arrival Time</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +56,7 @@ function Dashboard() {
                   ? new Date(flight.ActualArrivalTime).toLocaleString()
                   : new Date(flight.ScheduledArrivalTime).toLocaleString()}
               </td>
+              <td>{flight.status}</td>
             </tr>
           ))}
         </tbody>
