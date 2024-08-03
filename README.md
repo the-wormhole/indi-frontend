@@ -20,7 +20,7 @@ This is the frontend of the Flight Status Dashboard application. It allows users
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/the-wormhole/indigo-frontend-repo4vercel.git
+git clone https://github.com/the-wormhole/indi-frontend.git
 cd frontend
 ```
 
